@@ -19,7 +19,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "release": "standard-version",
-    "prepare": "husky install"
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
