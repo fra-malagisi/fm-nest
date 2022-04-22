@@ -1,7 +1,7 @@
-import { CreateMovieDto } from 'src/modules/movie/dto';
+import { MovieModel } from 'src/modules/movie/dto';
 import { Movie } from 'src/modules/movie/movie.schema';
 
-const movieConverter = (movieDto: CreateMovieDto): Movie => ({
+export const movieConverterDB = (movieDto: MovieModel): Movie => ({
   Poster_Link: movieDto.imgSrc,
   Series_Title: movieDto.title,
   Released_Year: movieDto.releasedYear,
@@ -20,4 +20,22 @@ const movieConverter = (movieDto: CreateMovieDto): Movie => ({
   Gross: movieDto.gross,
 });
 
-export default movieConverter;
+export const movieConverterFE = (movieBe: Movie): MovieModel => ({
+  id: movieBe['_id'],
+  imgSrc: movieBe['Poster_Link'],
+  title: movieBe['Series_Title'],
+  releasedYear: movieBe['Released_Year'],
+  certificate: movieBe.Certificate,
+  runtime: movieBe.Runtime,
+  genre: movieBe.Genre,
+  imdbRating: movieBe['IMDB_Rating'],
+  overview: movieBe.Overview,
+  metaScore: movieBe['Meta_score'],
+  director: movieBe.Director,
+  star1: movieBe.Star1,
+  star2: movieBe.Star2,
+  star3: movieBe.Star3,
+  star4: movieBe.Star4,
+  noOfVotes: movieBe['No_of_Votes'],
+  gross: movieBe.Gross,
+});

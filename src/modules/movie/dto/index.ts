@@ -1,1 +1,2 @@
-export { CreateMovieDto } from './create-movie.dto';
+export { MovieModel } from './movie.dto';
+export { MovieCertificatesEnum } from './movie.dto';
