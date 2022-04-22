@@ -2,8 +2,8 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Movie, MovieDocument } from 'src/modules/movie/movie.schema';
-import { CreateMovieDto } from './dto';
-import movieConverter from 'src/utils/converters/movie-converter';
+import { MovieModel } from './dto';
+import { movieConverterDB } from 'src/utils/converters/movie-converter';
 
 @Injectable()
 export class MoviesService {
@@ -11,8 +11,8 @@ export class MoviesService {
     @InjectModel(Movie.name) private movieModel: Model<MovieDocument>,
   ) {}
 
-  async create(createMovieDto: CreateMovieDto): Promise<Movie> {
-    const createdCat = new this.movieModel(movieConverter(createMovieDto));
+  async create(createMovieDto: MovieModel): Promise<Movie> {
+    const createdCat = new this.movieModel(movieConverterDB(createMovieDto));
     return createdCat.save();
   }
 
