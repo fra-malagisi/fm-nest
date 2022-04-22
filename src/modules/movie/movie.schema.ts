@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { MovieCertificatesEnum } from './dto';
 
 export type MovieDocument = Movie & Document;
 
@@ -15,7 +16,7 @@ export class Movie {
   Released_Year: number;
 
   @Prop({ maxlength: [1, 'Certificate cannot be more than 1 character'] })
-  Certificate: string;
+  Certificate: MovieCertificatesEnum;
 
   @Prop()
   Runtime: number;
