@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/fra-malagisi/fm-nest/compare/v0.0.3...v0.0.4) (2022-04-22)
+
+
+### Features
+
+* add api prefix ([c6ebc21](https://github.com/fra-malagisi/fm-nest/commit/c6ebc219ff674db0ca38b4049b0ddbad291a57f8))
+* swagger ([7fe7dfe](https://github.com/fra-malagisi/fm-nest/commit/7fe7dfeb983b5af6c7be4fe746839fbcd10005d5))
+
+
+### Bug Fixes
+
+* add swagger to movie controller and service ([e35ed74](https://github.com/fra-malagisi/fm-nest/commit/e35ed74f0a320d2f0e3cacf43a8fda40278fb220))
+* certifiate movie enum ([5c10a17](https://github.com/fra-malagisi/fm-nest/commit/5c10a17e8b840e514d609f9893514f368d18d55f))
+* remap movie model ([c7668bd](https://github.com/fra-malagisi/fm-nest/commit/c7668bdc878ebe435c13e1a71dffe3a349c5e4cf))
+
 ### 0.0.3 (2022-04-21)
 
 
