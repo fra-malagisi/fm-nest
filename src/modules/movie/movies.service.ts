@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Movie, MovieDocument } from 'src/modules/movie/movie.schema';
 import { MovieDto } from './dto';
 import { movieConverterDB } from 'src/utils/converters/movie-converter';
+import { PaginationQueryDto } from 'src/common/pagination-query.dto';
 
 @Injectable()
 export class MoviesService {
@@ -18,5 +19,13 @@ export class MoviesService {
 
   async findAll(): Promise<Movie[]> {
     return this.movieModel.find().exec();
+  }
+
+  async findAllWithPagination(
+    paginationQuery: PaginationQueryDto,
+  ): Promise<Movie[]> {
+    const { limit, offset } = paginationQuery;
+
+    return await this.movieModel.find().skip(offset).limit(limit).exec();
   }
 }
