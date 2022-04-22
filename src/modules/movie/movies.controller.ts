@@ -1,7 +1,7 @@
 import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { movieConverterFE } from 'src/utils/converters/movie-converter';
-import { MovieModel } from './dto';
+import { MovieDto } from './dto';
 import { MoviesService } from './movies.service';
 
 @ApiTags('movies')
@@ -12,11 +12,11 @@ export class MoviesController {
   @Get()
   @ApiResponse({
     status: 200,
-    type: MovieModel,
+    type: MovieDto,
     isArray: true,
     description: 'Return All Movies',
   })
-  async getMovies(@Res() res): Promise<MovieModel[]> {
+  async getMovies(@Res() res): Promise<MovieDto[]> {
     const movies = await this.moviesService.findAll();
     return res
       .status(HttpStatus.OK)

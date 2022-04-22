@@ -7,7 +7,7 @@ export enum MovieCertificatesEnum {
   S = 'S',
 }
 
-export class MovieModel {
+export class MovieDto {
   @ApiProperty({
     description: 'DB id for movie',
     type: String,

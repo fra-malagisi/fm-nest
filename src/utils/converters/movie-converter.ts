@@ -1,7 +1,7 @@
-import { MovieModel } from 'src/modules/movie/dto';
+import { MovieDto } from 'src/modules/movie/dto';
 import { Movie } from 'src/modules/movie/movie.schema';
 
-export const movieConverterDB = (movieDto: MovieModel): Movie => ({
+export const movieConverterDB = (movieDto: MovieDto): Movie => ({
   Poster_Link: movieDto.imgSrc,
   Series_Title: movieDto.title,
   Released_Year: movieDto.releasedYear,
@@ -20,7 +20,7 @@ export const movieConverterDB = (movieDto: MovieModel): Movie => ({
   Gross: movieDto.gross,
 });
 
-export const movieConverterFE = (movieBe: Movie): MovieModel => ({
+export const movieConverterFE = (movieBe: Movie): MovieDto => ({
   id: movieBe['_id'],
   imgSrc: movieBe['Poster_Link'],
   title: movieBe['Series_Title'],
