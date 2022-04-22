@@ -38,6 +38,8 @@ export class MoviesController {
     const movies = await this.moviesService.findAllWithPagination(
       paginationQuery,
     );
-    return res.status(HttpStatus.OK).json(movies);
+    return res
+      .status(HttpStatus.OK)
+      .json(movies.map((movie) => movieConverterFE(movie)));
   }
 }
