@@ -23,9 +23,14 @@ export class MoviesService {
 
   async findAllWithPagination(
     paginationQuery: PaginationQueryDto,
-  ): Promise<Movie[]> {
+  ): Promise<{ movies: Movie[]; total: number }> {
     const { limit, offset } = paginationQuery;
-
-    return await this.movieModel.find().skip(offset).limit(limit).exec();
+    const movies = await this.movieModel
+      .find()
+      .skip(offset)
+      .limit(limit)
+      .exec();
+    const total = await this.movieModel.count().exec();
+    return { movies, total };
   }
 }

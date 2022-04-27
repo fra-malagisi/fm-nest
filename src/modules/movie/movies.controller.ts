@@ -3,6 +3,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationQueryDto } from 'src/common/pagination-query.dto';
 import { movieConverterFE } from 'src/utils/converters/movie-converter';
 import { MovieDto } from './dto';
+import { MoviePaginationDto } from './dto/movie.dto';
 import { MoviesService } from './movies.service';
 
 @ApiTags('movies')
@@ -27,19 +28,19 @@ export class MoviesController {
   @Get('/pagination')
   @ApiResponse({
     status: 200,
-    type: MovieDto,
-    isArray: true,
+    type: MoviePaginationDto,
     description: 'Return All Movies with pagination',
   })
   public async getMoviesWithPagination(
     @Res() res,
     @Query() paginationQuery: PaginationQueryDto,
   ) {
-    const movies = await this.moviesService.findAllWithPagination(
+    const data = await this.moviesService.findAllWithPagination(
       paginationQuery,
     );
-    return res
-      .status(HttpStatus.OK)
-      .json(movies.map((movie) => movieConverterFE(movie)));
+    return res.status(HttpStatus.OK).json({
+      movies: data.movies.map((movie) => movieConverterFE(movie)),
+      total: data.total,
+    });
   }
 }

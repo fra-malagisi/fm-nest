@@ -110,3 +110,17 @@ export class MovieDto {
   })
   gross: string;
 }
+
+export class MoviePaginationDto {
+  @ApiProperty({
+    description: 'Movie List',
+    type: [MovieDto],
+  })
+  movies: MovieDto[];
+
+  @ApiProperty({
+    description: 'Total movies',
+    type: Number,
+  })
+  total: number;
+}
